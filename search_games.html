@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Games by Team</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Search Games by Team</h1>
+
+    <form method="POST" action="/search_games">
+        <label for="team_name">Enter Team Name:</label>
+        <input type="text" id="team_name" name="team_name" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if games %}
+    <h2>Games involving {{ team_name }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Game ID</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Venue</th>
+                <th>Home Team</th>
+                <th>Away Team</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for game in games %}
+            <tr>
+                <td>{{ game['GameID'] }}</td>
+                <td>{{ game['Date'] }}</td>
+                <td>{{ game['Time'] }}</td>
+                <td>{{ game['Venue'] }}</td>
+                <td>{{ game['HomeTeamName'] }}</td>
+                <td>{{ game['AwayTeamName'] }}</td>
+                <td>{{ game['Result'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No games found for the specified team.</p>
+    {% endif %}
+</body>
+</html>

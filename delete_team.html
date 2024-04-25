@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete a Team</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Delete a Team</h1>
+
+    <form method="post" action="/delete_team">
+        <div>
+            <label for="team_id">Select Team to Delete:</label>
+            <select name="team_id" required>
+                {% for team in teams %}
+                    <option value="{{ team['TeamID'] }}">{{ team['Name'] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit">Delete Team</button>  <!-- Submit the form -->
+    </form>
+
+    <a href="/teams">Back to Teams</a>  <!-- Navigation link -->
+</body>
+</html>

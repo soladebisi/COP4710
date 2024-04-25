@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NBA Database</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/add_team">Add Team</a>
+        <a href="/fav_teams">Favorite Teams</a>
+        <a href="/teams">Teams</a>
+        <a href="/players">Players</a>
+        <a href="/games">Games</a>
+        <a href="/delete_team">Delete Team</a>
+        <form method="POST" action="/search_games" style="display:inline;">
+            <input type="text" name="team_name" placeholder="Search Games by Team" required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if 'user' in session %}
+            <a href="/logout">Logout</a>
+        {% endif %}
+    </nav>
+
+    <!-- Adding a heading with alternating blue and red colors -->
+    <h1>
+        <span style="color: blue;">N</span>
+        <span style="color: red;">B</span>
+        <span style="color: blue;">A</span>
+        <span> </span>
+        <span style="color: red;">D</span>
+        <span style="color: blue;">A</span>
+        <span style="color: red;">T</span>
+        <span style="color: blue;">A</span>
+        <span style="color: red;">B</span>
+        <span style="color: blue;">A</span>
+        <span style="color: red;">S</span>
+        <span style="color: blue;">E</span>
+    </h1>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

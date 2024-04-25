@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Games Involving Allowed Teams</h1>
+
+{% if games %}
+<table>
+    <thead>
+        <tr>
+            <th>Game ID</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Venue</th>
+            <th>Home Team</th>
+            <th>Away Team</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for game in games %}
+        <tr>
+            <td>{{ game['GameID'] }}</td>
+            <td>{{ game['Date'] }}</td>
+            <td>{{ game['Time'] }}</td>
+            <td>{{ game['Venue'] }}</td>
+            <td>{{ game['HomeTeamName'] }}</td>
+            <td>{{ game['AwayTeamName'] }}</td>
+            <td>{{ game['Result'] }}</td>
+            <td><a href="{{ url_for('update_game', game_id=game['GameID']) }}">Update Result</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+    <p>No games available for the allowed teams.</p>
+{% endif %}
+
+{% endblock %}

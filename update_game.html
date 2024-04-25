@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Game Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Update Game Result</h1>
+
+    <form method="POST">
+        <input type="hidden" name="game_id" value="{{ game['GameID'] }}">
+        <label for="result">New Result:</label>
+        <input type="text" name="result" id="result" value="{{ game['Result'] }}" required>
+
+        <button type="submit">Update Result</button>
+    </form>
+
+    <a href="{{ url_for('games') }}">Back to Games</a>
+</body>
+</html>

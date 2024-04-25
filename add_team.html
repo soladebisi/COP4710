@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a New Team</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Add a New Team</h1>
+
+    <form method="post" action="/add_team">
+        <div>
+            <label for="team_name">Team Name:</label>
+            <input type="text" name="team_name" required>
+        </div>
+
+        <div>
+            <label for="team_location">Team Location:</label>
+            <input type="text" name="team_location" required>
+        </div>
+
+        <div>
+            <label for="team_owner">Team Owner:</label>
+            <input type="text" name="team_owner" required>
+        </div>
+
+        <button type="submit">Add Team</button>  <!-- Submit the form -->
+    </form>
+
+    <a href="/teams">Back to Teams</a>  <!-- Navigation link -->
+</body>
+</html>
